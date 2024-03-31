@@ -4,6 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 
             // getActions().changeColor(0, "green");    setStore({ demo: demo });   const store = getStore();
+			
 			progressDisplay: (memo) => {
 				if (memo !== `exit screen`) {
 					const existingMemos = getStore().memos || [];
