@@ -7,9 +7,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			progressDisplay: (memo) => {
 
 				const existingMemos = getStore().memos || [];
-				const lastMemos = existingMemos.slice(-15);
-				const newMemos = [...lastMemos, [memo]];
-				setStore({memos: [newMemos]})
+				const lastMemos = existingMemos.slice(-10);
+				const newMemos = [...lastMemos, memo];
+				setStore({memos: newMemos})
 
 				//getActions().progressDisplay(memo);
 			},
@@ -43,18 +43,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(`${type} fetched successfully!`);
 						getActions().progressDisplay(`${type} fetched successfully!`);
 
-						const detailPromises = typeData.results.map( async (item) => {
-							const individualResponse = await fetch(item.url);
-							const individualData = await individualResponse.json();
-							if (individualData.message !== "ok") {
-								console.log(`Error fetching ${item.name}`);
-								getActions().progressDisplay(`Error fetching ${item.name}`);
-								return { uid: [item.uid], result: {...[item], fully_fetched: false} }
+						const detailPromises = typeData.results.map(async (item) => {
+							try {
+							  const individualResponse = await fetch(item.url);
+							  const individualData = await individualResponse.json();
+							  if (individualData.message !== "ok") {
+								throw new Error(`Error fetching ${item.name}`);
 							  }
-							  console.log(`${item.name} fetched`);
-							  getActions().progressDisplay(`${item.name} fetched`);
-							  return individualData.result
-						}) //closing detailPromises map
+							  console.log(`${item.name} fetched successfully`);
+							  getActions().progressDisplay(`${item.name} fetched successfully`);
+							  return individualData.result;
+							} catch (error) {
+							  console.error(error.message);
+							  getActions().progressDisplay(error.message);
+							  return { uid: item.uid, result: {...item, fully_fetched: false} };
+							}
+						  }); //closing detailPromises map
 						
 						const completeList = await Promise.all(detailPromises);
 						allData[type] = completeList.reduce((accumulator, accumulated) => {

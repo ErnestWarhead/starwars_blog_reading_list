@@ -19,10 +19,8 @@ const injectContext = PassedComponent => {
 
 		useEffect(() => {
 			state.actions.getData()
+			//localStorage.clear();
 		}, []);
-		//useEffect(() => {
-		//	console.log(state.store)
-		//}, [state.store]);
 
 		return (
 			<Context.Provider value={state}>
