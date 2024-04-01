@@ -21,10 +21,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log("Let's get localStorage");
 				const isStored = localStorage.getItem(storage);
 				console.log("localStorage aquired");
-				getActions().progressDisplay("localStorage aquired");
 				if (isStored !== undefined && isStored !== null) {
 					console.log(`store is being set from localStorage!`);
-					getActions().progressDisplay(`Seting store from localStorage!`);
+					getActions().progressDisplay("localStorage aquired!");
 					await new Promise(resolve => setTimeout (resolve, 2000));
 					setStore(JSON.parse(isStored));
 					console.log(`store was set from localStorage, this is it now: `);
@@ -83,6 +82,53 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			} //closing else statement
 			}, //closing getData
+
+			prepareKey: ([key,value]) => {
+				const prop = [];
+				for (const char of key) {
+					if (prop.length === 0) {
+						prop.push(char.toUpperCase())
+					} else if (char === "_") {
+						prop.push(" ")
+					} else if (prop[prop.length -1] === " ") {
+						prop.push(char.toUpperCase());
+					} else {
+						prop.push(char)
+					}
+				}
+				return `${prop.join("")}: ${value}`
+
+			},  //closing prepareKey
+
+			set_getDetails: (payload) => {
+
+			if (payload) {
+				console.log(`setDetails: setting store with :`)
+				console.log({"details": payload});
+				setStore({"details": payload});
+				console.log(`setDetails: setting localStorage with details`)
+				localStorage.setItem("details", JSON.stringify(payload))
+			} else{
+				if (getStore().details) {
+					console.log(`setDetails: getting details from store`)
+					return getStore().details
+				} else {	
+					console.log(`setDetails: getting details from localStorage`)
+					const stored = localStorage.getItem("details")
+						if (stored) {
+							console.log("setDetails: setting store and returning from local storage")
+							const data = JSON.parse(stored)
+							setStore({"details": data});
+							return data
+						} else {
+							console.log("setDetails: there was nothing in store or localStorage")
+							return {bad_status: `No details available. Go back home and click on "Learn more!"`}
+						}
+
+				}
+			}  //closing else
+
+			}  //closing setDetails
 
 		}  //closing actions
 	};  //closing return
