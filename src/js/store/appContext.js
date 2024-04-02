@@ -20,7 +20,6 @@ const injectContext = PassedComponent => {
 		useEffect(() => {
 			state.actions.getData(["people", "planets", "vehicles"], "storage1");
 			//state.actions.getData(["species", "starships"], "storage2")
-			//localStorage.clear();
 		}, []);
 
 

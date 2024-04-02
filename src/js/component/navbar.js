@@ -6,9 +6,7 @@ import { Context } from "../store/appContext"
 export const Navbar = () => {
 
 	const state = useContext(Context);
-	const data = state.store.favorites && state.store.favorites.length > 0 
-  ? [...state.actions.set_get_deleteFavorites("get")] 
-  : [];
+	const data = state.actions.set_get_deleteFavorites("get");
 
 	
 	return (
