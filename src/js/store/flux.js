@@ -32,7 +32,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					getActions().progressDisplay(`localStorage was empty, fetching data`);
 					let allData = {};
 
-					for (const type of fetching) { 
+					for (const type of fetching) { try {
 						const typeResponse = await fetch(`https://www.swapi.tech/api/${type}?page=1&limit=999`);
 						const typeData = await typeResponse.json();
 						if (typeData.message !== "ok") {
@@ -67,8 +67,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 						}, {})//closing reduce
 						console.log(`allData was updated with ${type}`)
 						getActions().progressDisplay(`allData was updated with ${type}`);
+					} catch (error) {
+						console.log(`there was an error while fetching, before setting allData:
+						${error}`)
 
-					}//closing the first for loop
+					}}//closing the first for loop
 					console.log("all Done!")
 					getActions().progressDisplay("all Done!");
 					await new Promise(resolve => setTimeout (resolve, 1500));
