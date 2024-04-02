@@ -23,8 +23,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log("localStorage aquired");
 				if (isStored !== undefined && isStored !== null) {
 					console.log(`store is being set from localStorage!`);
-					getActions().progressDisplay("localStorage aquired!");
-					await new Promise(resolve => setTimeout (resolve, 2000));
 					setStore(JSON.parse(isStored));
 					console.log(`store was set from localStorage, this is it now: `);
 					console.log(getStore())
@@ -58,7 +56,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							} catch (error) {
 								getActions().progressDisplay(error.message);
 							  	console.error(error.message);
-							  return { uid: item.uid, result: {...item, fully_fetched: false} };
+							  return { uid: item.uid, properties: {fully_fetched: false, error: "no data sent by api", ...item} };
 							}
 						  }); //closing detailPromises map
 						
@@ -73,7 +71,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}//closing the first for loop
 					console.log("all Done!")
 					getActions().progressDisplay("all Done!");
-					await new Promise(resolve => setTimeout (resolve, 2000));
+					await new Promise(resolve => setTimeout (resolve, 1500));
 					setStore(allData);
 					localStorage.setItem(storage, JSON.stringify(allData));
 					console.log(`store and localStorage were updated with: `);
@@ -103,32 +101,77 @@ const getState = ({ getStore, getActions, setStore }) => {
 			set_getDetails: (payload) => {
 
 			if (payload) {
-				console.log(`setDetails: setting store with :`)
+				console.log(`set_getDetails: setting store with :`)
 				console.log({"details": payload});
 				setStore({"details": payload});
-				console.log(`setDetails: setting localStorage with details`)
+				console.log(`set_getDetails: setting localStorage with details`)
 				localStorage.setItem("details", JSON.stringify(payload))
 			} else{
 				if (getStore().details) {
-					console.log(`setDetails: getting details from store`)
+					console.log(`set_getDetails: getting details from store`)
 					return getStore().details
 				} else {	
-					console.log(`setDetails: getting details from localStorage`)
+					console.log(`set_getDetails: getting details from localStorage`)
 					const stored = localStorage.getItem("details")
 						if (stored) {
-							console.log("setDetails: setting store and returning from local storage")
+							console.log("set_getDetails: setting store and returning from local storage")
 							const data = JSON.parse(stored)
 							setStore({"details": data});
 							return data
 						} else {
-							console.log("setDetails: there was nothing in store or localStorage")
+							console.log("set_getDetails: there was nothing in store or localStorage")
 							return {bad_status: `No details available. Go back home and click on "Learn more!"`}
 						}
 
 				}
 			}  //closing else
 
-			}  //closing setDetails
+			},  //closing set_getDetails
+
+			set_get_deleteFavorites: (action, payload) => {
+
+				if (action === "add") {
+					console.log(`set_get_deleteFavorites: adding ${payload.name} to favorites with:`)
+					console.log({"favorites": payload});
+					const currentFavorites = getStore().favorites;
+					setStore({"favorites": currentFavorites ? [...currentFavorites, payload] : [payload]});
+					console.log(`set_get_deleteFavorites: setting localStorage with favorites`)
+					localStorage.setItem("favorites", JSON.stringify(getStore().favorites))
+					console.log(`set_get_deleteFavorites: new favorites:`)
+					console.log(getStore().favorites);
+
+				} else if (action === "delete") {
+					console.log(`set_get_deleteFavorites: deleting ${getStore().favorites[payload].name} from favorites`)
+					const currentFavorites = getStore().favorites;
+					const newFavsorites = currentFavorites.filter((fav, index) => index !== payload);
+					setStore({"favorites": newFavsorites});
+					console.log(`set_get_deleteFavorites: setting localStorage with new favorites:`)
+					console.log(newFavsorites)
+					localStorage.setItem("favorites", JSON.stringify(newFavsorites))
+					console.log(`set_get_deleteFavorites: new favorites:`)
+					console.log(getStore().favorites);
+
+				}else if (action === "get") {
+					if (getStore().favorites) {
+						console.log(`set_get_deleteFavorites: getting favorites from store`)
+						return getStore().favorites
+					} else {	
+						console.log(`set_get_deleteFavorites: getting favorites from localStorage`)
+						const stored = localStorage.getItem("favorites")
+							if (stored) {
+								console.log("set_get_deleteFavorites: setting store and returning from local storage")
+								const data = JSON.parse(stored)
+								setStore({"favorites": data});
+								return data
+							} else {
+								console.log("set_get_deleteFavorites: there was no favorites in store or localStorage")
+								return []
+							}
+	
+					}
+				}  //closing else
+	
+				},  //closing set_get_deleteFavorites
 
 		}  //closing actions
 	};  //closing return
