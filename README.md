@@ -7,34 +7,28 @@ Project Description
 
 The Star Wars Universe Explorer is a dynamic web application designed to fetch and beautifully render detailed information about the Star Wars universe. Leveraging modern web technologies, this project offers an optimized, responsive, and engaging user experience.
 
-Features
+Features:
 
-Optimized Performance
+Optimized Performance  
+ •Creativity: Custom and fun loading screen that transitions users smoothly into the list of Star Wars data.
 
-	•	Creativity: Custom and fun loading screen that transitions users smoothly into the list of Star Wars data.
+State Management  
+ •Efficient State Handling: Utilized Flux to manage state across multiple components, ensuring quick response times and high uptime.
 
-State Management
+Responsive Design  
+ •Seamless Viewing: Implemented with Bootstrap to ensure the application is responsive and looks great on devices of all sizes.
 
-	•	Efficient State Handling: Utilized Flux to manage state across multiple components, ensuring quick response times and high uptime.
+Robust Stability  
+ •Advanced Error Handling: Integrated error handling mechanisms to maintain an A+ security rating and smooth user interactions.
 
-Responsive Design
+Modular Design  
+ •Scalable Codebase: Crafted a modular, scalable, and maintainable codebase that significantly reduces bandwidth usage and boosts site performance.
 
-	•	Seamless Viewing: Implemented with Bootstrap to ensure the application is responsive and looks great on devices of all sizes.
+Technologies Used:
 
-Robust Stability
-
-	•	Advanced Error Handling: Integrated error handling mechanisms to maintain an A+ security rating and smooth user interactions.
-
-Modular Design
-
-	•	Scalable Codebase: Crafted a modular, scalable, and maintainable codebase that significantly reduces bandwidth usage and boosts site performance.
-
-Technologies Used
-
-Frontend
-
-	•	Javascript: Core scripting language for dynamic content.
-	•	React.js: Frontend framework for building a dynamic and responsive user interface.
-	•	Flux: Architectural pattern for efficient state management.
-	•	HTML/CSS: Markup and styling for the application’s structure and design.
-	•	Bootstrap: Ensuring responsive design across various devices.
+Frontend  
+ •Javascript: Core scripting language for dynamic content.
+ •React.js: Frontend framework for building a dynamic and responsive user interface.
+ •Flux: Architectural pattern for efficient state management.
+ •HTML/CSS: Markup and styling for the application’s structure and design.
+ •Bootstrap: Ensuring responsive design across various devices.
