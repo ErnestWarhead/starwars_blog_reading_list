@@ -1,4 +1,4 @@
-https://github.com/ErnestWarhead/starwars_blog_reading_list/blob/main/Star%20Wars%20live%20demo.mp4
+https://github.com/ErnestWarhead/starwars_blog_reading_list/blob/main/Star%20Wars%20live%20demo.mp4  
 You may have to download the demo video to see it, it's only 13 MB
 
 Star Wars Universe Explorer
