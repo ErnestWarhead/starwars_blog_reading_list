@@ -1,42 +1,40 @@
-# Hello World with React boilerplate
+https://github.com/ErnestWarhead/starwars_blog_reading_list/blob/main/Star%20Wars%20live%20demo.mp4
+You may have to download the demo video to see it, it's only 13 MB
 
-Start coding a react application
+Star Wars Universe Explorer
 
-> If you are working locally instead of using codespaces or gitpod, please follow [local installation steps](#local-installation-skip-if-you-are-working-on-codespaces-or-gitpod) and come back to this part of the readme.
+Project Description
 
-## How to start coding?
+The Star Wars Universe Explorer is a dynamic web application designed to fetch and beautifully render detailed information about the Star Wars universe. Leveraging modern web technologies, this project offers an optimized, responsive, and engaging user experience.
 
-- Install the packages with `$ npm install`.
-- Run the webpack server with `$ npm run start`
+Features
 
-You can update the `styles/index.css` or `js/index.js` depending on your needs.
-Add more files into your, `./src/js/components` or styles folder as you need them.
+Optimized Performance
 
-## Local Installation (skip if you are working on codespaces or gitpod)
+	•	Creativity: Custom and fun loading screen that transitions users smoothly into the list of Star Wars data.
 
-Download the boilerplate using git
+State Management
 
-```
-$ git clone https://github.com/4GeeksAcademy/react-hello.git
-$ cd react-hello
-```
+	•	Efficient State Handling: Utilized Flux to manage state across multiple components, ensuring quick response times and high uptime.
 
-## Publish your website!
+Responsive Design
 
-This boilerplate is 100% compatible with the free [github pages](https://pages.github.com/) and [vercel](https://vercel.com/) hosting.
+	•	Seamless Viewing: Implemented with Bootstrap to ensure the application is responsive and looks great on devices of all sizes.
 
-It takes just 2 minutes to deploy, [click here to start the process](https://github.com/4GeeksAcademy/react-hello/blob/master/docs/DEPLOY.md).
+Robust Stability
 
-## Other features
+	•	Advanced Error Handling: Integrated error handling mechanisms to maintain an A+ security rating and smooth user interactions.
 
-- Automatic Code Formatting: Use of [Prettier](https://prettier.io/) for automatic code indentation and formatting.
-- Error reporting: Use of [eslint](https://eslint.org/) for better error reporting.
-- Hot Deploy: Use of [Webpack Development Server](https://webpack.js.org/configuration/dev-server/) for hot deploy and live reload.
-- One-command publish of the code to github pages with `npm run deploy:github`.
-- Babel 7 (really fast).
+Modular Design
 
-### Contributors
+	•	Scalable Codebase: Crafted a modular, scalable, and maintainable codebase that significantly reduces bandwidth usage and boosts site performance.
 
-This template was built as part of the 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about our [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), and [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning).
+Technologies Used
 
-You can find other templates and resources like this at the [school github page](https://github.com/4geeksacademy/).
+Frontend
+
+	•	Javascript: Core scripting language for dynamic content.
+	•	React.js: Frontend framework for building a dynamic and responsive user interface.
+	•	Flux: Architectural pattern for efficient state management.
+	•	HTML/CSS: Markup and styling for the application’s structure and design.
+	•	Bootstrap: Ensuring responsive design across various devices.
